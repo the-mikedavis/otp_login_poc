@@ -13,13 +13,19 @@ defmodule OneWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug OneWeb.SessionPlug
+  end
+
   scope "/", OneWeb do
-    pipe_through :browser
+    pipe_through ~w(browser auth)a
 
     get "/", PageController, :index
   end
 
   scope "/login", OneWeb do
     pipe_through :browser
+
+    resources "/", LoginController, only: [:index, :create, :delete]
   end
 end

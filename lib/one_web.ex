@@ -21,7 +21,7 @@ defmodule OneWeb do
     quote do
       use Phoenix.Controller, namespace: OneWeb
       import Plug.Conn
-      import OneWeb.Router.Helpers
+      alias OneWeb.Router.Helpers, as: Routes
       import OneWeb.Gettext
     end
   end
@@ -37,7 +37,7 @@ defmodule OneWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import OneWeb.Router.Helpers
+      alias OneWeb.Router.Helpers, as: Routes
       import OneWeb.ErrorHelpers
       import OneWeb.Gettext
     end

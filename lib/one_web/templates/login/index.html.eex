@@ -1,0 +1,10 @@
+<%= form_for @changeset, Routes.login_path(@conn, :create), fn f -> %>
+  <div>
+    <%= label f, :password %>
+    <%= text_input(f, :password, required: true) %>
+    <%= error_tag f, :password %>
+  </div>
+  <%= hidden_input f, :secret %>
+
+  <%= submit "Log in" %>
+<% end %>
